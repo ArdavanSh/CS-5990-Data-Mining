@@ -30,7 +30,7 @@ for i, doc in enumerate(docs):
     for word in doc.split():
         cleaned_word = re.sub('[^a-zA-Z]', '', word).lower()
         if cleaned_word in dict:
-            dset[dict[word]] += 1
+            dset[dict[cleaned_word]] += 1
     dataset[i, :]= dset    
 
 # Compare the pairwise cosine similarities and store the highest one
