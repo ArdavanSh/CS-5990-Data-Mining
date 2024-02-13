@@ -9,6 +9,7 @@
 # Importing some Python libraries
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+import re
 
 # Defining the documents
 doc1 = "soccer is my favorite sport"
@@ -27,7 +28,8 @@ dataset = np.zeros((len(docs), len(dict)))
 for i, doc in enumerate(docs):
     dset = np.zeros(len(dict))
     for word in doc.split():
-        if word in dict:
+        cleaned_word = re.sub('[^a-zA-Z]', '', word).lower()
+        if cleaned_word in dict:
             dset[dict[word]] += 1
     dataset[i, :]= dset    
 
